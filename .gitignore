@@ -136,4 +136,5 @@ dmypy.json
 .idea
 
 # ----- MANUAL --------
-
+data/crawling-output/
+data/scoring-output/
