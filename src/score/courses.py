@@ -94,7 +94,11 @@ def score_school_courses(school: str, year: int, output_dir: str, dictionary_nam
     # Loading crawling results
     courses_fn = \
         Path(__file__).parent.absolute().joinpath(f"../../{CRAWLING_OUTPUT_FOLDER}{school}_courses_{year}.json")
+    courses_fn = "/home/gael/crawler/Education4Climate/data/crawling-output/insa_centre_courses_2021.json"
+    print('courses_fn = ', courses_fn)
+
     courses_df = pd.read_json(open(courses_fn, 'r'), dtype={'id': str})
+    print(courses_df.head())
 
     # Load fields on which the scoring has to be done
     scoring_fields_fn = Path(__file__).parent.absolute().joinpath(f"../../data/scoring_fields.csv")
@@ -191,9 +195,13 @@ if __name__ == "__main__":
     parser.add_argument("-y", "--year", help="Academic year", default=2020)
 
     arguments = vars(parser.parse_args())
-    arguments['output_dir'] = Path(__file__).parent.absolute().joinpath(f"../../{SCORING_OUTPUT_FOLDER}/")
+    #arguments['output_dir'] = Path(__file__).parent.absolute().joinpath(f"../../{SCORING_OUTPUT_FOLDER}/")
+    arguments['output_dir'] = f"../../{SCORING_OUTPUT_FOLDER}/"
     arguments['dictionary_name'] = 'v1.1'
 
+    print(arguments)
+
+    '''
     schools = ["kuleuven", "uantwerpen", "uclouvain", "ugent", "uhasselt",
                "ulb", "uliege", "umons", "unamur", "uslb", "vub"]
     schools += ["artevelde", "ecam", "ecsedi-isalt", "ehb", "he-ferrer", "heaj", "hech", "hel", "heldb", "helmo",
@@ -203,3 +211,9 @@ if __name__ == "__main__":
         arguments['school'] = school
         print(school)
         score_school_courses(**arguments)
+    '''
+
+    # se lançe avec `python courses.py -s insa_centre -y 2021`
+    # créer /data/scoring-output
+
+    score_school_courses(**arguments)

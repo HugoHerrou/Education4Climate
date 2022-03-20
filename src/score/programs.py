@@ -42,6 +42,7 @@ if __name__ == "__main__":
     arguments = vars(parser.parse_args())
     # main(**arguments)
 
+    '''
     schools = ["kuleuven", "uantwerpen", "uclouvain", "ugent", "uhasselt",
                "ulb", "uliege", "umons", "unamur", "uslb", "vub"]
     schools += ["artevelde", "ecam", "ecsedi-isalt", "ehb", "he-ferrer", "heaj", "hech", "hel", "heldb", "helmo",
@@ -50,3 +51,8 @@ if __name__ == "__main__":
     for school in schools:
         print(school)
         main(school, arguments['year'])
+'''
+    # se lançe avec `python programs.py -s insa_centre -y 2021`
+    print(arguments)
+    school = arguments['school']
+    main(school, arguments['year'])
